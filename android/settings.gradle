@@ -1,0 +1,3 @@
+rootProject.name = 'ucgamesnative'
+
+include ':app'
