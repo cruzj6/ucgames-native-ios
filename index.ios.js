@@ -1,11 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import { DashboardContainer } from './components/DashboardContainer'
+import { DashboardContainer } from './components/Dashboard/DashboardContainer';
 import appStyles from './style/appStyle';
 import {
   AppRegistry,

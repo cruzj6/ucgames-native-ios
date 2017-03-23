@@ -12,20 +12,15 @@ export class DashboardContainer extends React.Component {
         navigator: PropTypes.object.isRequired
     }
 
-    _onForward = () => {
-        this.props.navigator.push({
-        });
-    }
+    _onForward = () => { this.props.navigator.push({}); }
 
     render() {
-        const {
-            componentStyles
-        } = this.props;
+        const { componentStyles } = this.props;
 
-        return (
-            <View>
-                <Dashboard componentStyles={componentStyles} />
-            </View>
-        )
+				return (
+				    <View>
+							<Dashboard componentStyles={componentStyles} />
+				    </View>
+				)
     }
 }
