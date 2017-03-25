@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
-import { Dashboard } from './Dashboard';
+import { connect } from 'react-redux';
+import TrackedList from './TrackedList';
 import {
     StyleSheet,
     Text,
     View
 } from 'react-native';
 
-export class DashboardContainer extends React.Component {
+// Smart component that contains the dashboard components
+class DashboardContainer extends React.Component {
 
     static propTypes = {
         navigator: PropTypes.object.isRequired
@@ -15,12 +17,19 @@ export class DashboardContainer extends React.Component {
     _onForward = () => { this.props.navigator.push({}); }
 
     render() {
-        const { componentStyles } = this.props;
+        const { componentStyles, trackedGames } = this.props;
+
+				const dashboardProps = {
+					componentStyles,
+					trackedGames
+				}
 
 				return (
 				    <View>
-							<Dashboard componentStyles={componentStyles} />
+							<TrackedList {...dashboardProps}/>
 				    </View>
 				)
     }
 }
+
+export default DashboardContainer;

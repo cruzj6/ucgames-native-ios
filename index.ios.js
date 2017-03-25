@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { DashboardContainer } from './components/Dashboard/DashboardContainer';
+import DashboardContainer from './components/Dashboard/DashboardContainer';
 import appStyles from './style/appStyle';
 import {
-  AppRegistry,
+	AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -18,7 +18,8 @@ export default class ucgamesnative extends Component {
             title: "Dashboard",
             component: DashboardContainer,
             passProps: {
-              componentStyles: appStyles.navContent
+              componentStyles: appStyles.navContent,
+							trackedGames: [] //TODO: Temp remove this
             }
           }}
         />
