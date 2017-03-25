@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
+import TopTracked from './components/TopTracked/TopTracked';
 import appStyles from './style/appStyle';
 import store from './store.js';
 import {
@@ -15,7 +16,7 @@ export default class ucgamesnative extends Component {
   render() {
     return (
 			<Provider store={store}>
-        <NavigatorIOS
+        /*<NavigatorIOS
           style={styles.container}
           initialRoute={{
             title: "Dashboard",
@@ -24,6 +25,13 @@ export default class ucgamesnative extends Component {
               componentStyles: appStyles.navContent,
 							trackedGames: [] //TODO: Temp remove this
             }
+          }}
+        />*/
+				<NavigatorIOS
+          style={styles.container}
+          initialRoute={{
+            title: "TopTracked",
+            component: TopTracked
           }}
         />
 			</Provider>
