@@ -18,9 +18,11 @@ export class Dashboard extends React.Component{
 	renderCell(game) {
 		return (
 			<View>
+				<Text>{game.name}</Text>
 				<Image
 					source={{uri: game.imageLink.icon_url}}
 					stype={{width: 80, height: 80}}
+					/>
 			</View>
 		);
 
