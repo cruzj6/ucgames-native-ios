@@ -7,21 +7,31 @@ const topTrackedParams = (amount) => {
 	}
 }
 
-const addTrackedParams = () => {
+const addTrackedParams = (id) => {
 	return {
-
+		gameid: id
 	}
 }
 
-const removeTrackedParams = () => {
+const removeTrackedParams = (id) => {
 	return {
-
+		gameid: id
 	}
 }
 
-const advancedSearchParams = () => {
+const advancedSearchFilters = (keywords) => {
 	return {
+		filters: keywords
+	}
+}
 
+const advancedSearchParams = (platform, month, year, keywords) => {
+	const filters = advancedSearchFilters(keywords);
+	return {
+		platform,
+		month,
+		year,
+		...filters
 	}
 }
 
@@ -30,7 +40,8 @@ export const getTrackedGames = () => {
 	return axios.get(`${UCConstants.BASE_URL}${UCConstants.USER_TRACKED}`);
 }
 
-export const addTrackedGame = () => {
+export const addTrackedGame = (id) => {
+	const params = addTrackedParams(id);
 	return axios.post(`${UCConstants.BASE_URL}${UCConstants.USER_TRACKED}`, { params });
 }
 
