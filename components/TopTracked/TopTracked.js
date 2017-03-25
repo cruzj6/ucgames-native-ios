@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import TopTrackedList from './TopTrackedList';
-import * as selectors from '../reducers/topTracked';
-import * as topTrackedActions from '../actions/TopTracked';
+import * as selectors from '../../reducers/topTracked';
+import * as topTrackedActions from '../../actions/TopTracked';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import {
+    StyleSheet,
+    Text,
+    View,
+    NavigatorIOS,
+    TouchableHighlight,
+		ListView
+} from 'react-native';
 
 class TopTracked extends Component{
 
@@ -31,8 +39,8 @@ class TopTracked extends Component{
 
 const mapStateToProps = state => {
 	return {
-		topTracked: selectors.getTopTracked(),
-		error: selectors.getTopTrackedError()
+		topTracked: selectors.getTopTracked(state),
+		error: selectors.getTopTrackedError(state)
 	}
 }
 

@@ -6,12 +6,12 @@ export default function topTracked(state = Immutable.Map(), action) {
 		case actionConstants.GET_TOP_TRACKED:
 			return state.set('topTracked', action.topTracked)
 				.delete('error');
-		case actionConstants
+		case actionConstants.ERROR_TOP_TRACKED:
 			return state.set('error', action.error);
 		default:
 			return state;
 	}
 }
 
-export const getTopTracked = state => state.get('topTracked');
-export const getTopTrackedError = state => state.get('error');
+export const getTopTracked = state => state.topTracked.get('topTracked');
+export const getTopTrackedError = state => state.topTracked.get('error');

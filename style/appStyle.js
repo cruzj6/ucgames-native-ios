@@ -11,14 +11,13 @@ export default StyleSheet.create({
         marginTop: vars.navContentTopMargin
     },
     trackedList: {
-        backgroundColor: '#f1c2a5'
+        backgroundColor: '#f1c2a5',
+    },
+		trackedCell: {
 
-				// Cell style
-				cell: {
-					image: {
-						width: 80,
-						height: 80
-					}
-				}
-    }
+		},
+		trackedCellImage: {
+			width: 80,
+			height: 80
+		}
 });

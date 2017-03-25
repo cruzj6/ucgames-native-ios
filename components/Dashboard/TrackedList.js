@@ -18,7 +18,7 @@ const TrackedList = ({ componentStyles, trackedGames }) => {
 				<Text>{game.name}</Text>
 				<Image
 					source={{uri: game.imageLink.icon_url}}
-					style={[appStyle.trackedList.cell.image]}
+					style={[appStyle.trackedCellImage]}
 					/>
 			</View>
 		);
