@@ -2,27 +2,19 @@ import { axios } from 'axios';
 import UCConstants from '../constants/ucapi';
 
 const topTrackedParams = (amount) => {
-	return {
-		number: amount
-	}
+	return { number: amount}
 }
 
 const addTrackedParams = (id) => {
-	return {
-		gameid: id
-	}
+	return { gameid: id }
 }
 
 const removeTrackedParams = (id) => {
-	return {
-		gameid: id
-	}
+	return { gameid: id }
 }
 
 const advancedSearchFilters = (keywords) => {
-	return {
-		filters: keywords
-	}
+	return { filters: keywords }
 }
 
 const advancedSearchParams = (platform, month, year, keywords) => {
