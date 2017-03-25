@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
 import appStyles from './style/appStyle';
+import store from './store.js';
 import {
 	AppRegistry,
   StyleSheet,
@@ -12,6 +14,7 @@ import {
 export default class ucgamesnative extends Component {
   render() {
     return (
+			<Provider store={store}>
         <NavigatorIOS
           style={styles.container}
           initialRoute={{
@@ -23,6 +26,7 @@ export default class ucgamesnative extends Component {
             }
           }}
         />
+			</Provider>
     );
   }
 }
