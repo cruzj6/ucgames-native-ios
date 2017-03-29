@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
 import TopTracked from './components/TopTracked/TopTracked';
-import appStyles from './style/appStyle';
 import store from './store.js';
 import {
 	AppRegistry,

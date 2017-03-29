@@ -1,11 +1,8 @@
 import React from 'react';
-import appStyle from '../../style/appStyle';
 import {
     StyleSheet,
     Text,
     View,
-    NavigatorIOS,
-    TouchableHighlight,
 		ListView
 } from 'react-native';
 
@@ -18,7 +15,7 @@ const TrackedList = ({ componentStyles, trackedGames }) => {
 				<Text>{game.name}</Text>
 				<Image
 					source={{uri: game.imageLink.icon_url}}
-					style={[appStyle.trackedCellImage]}
+					style={styles.trackedCellImage}
 					/>
 			</View>
 		);
@@ -34,5 +31,12 @@ const TrackedList = ({ componentStyles, trackedGames }) => {
 	  </View>
 	)
 }
+
+const styles = StyleSheet.create({
+	trackedCellImage: {
+		width: 80,
+		height: 80
+	}
+});
 
 export default TrackedList;

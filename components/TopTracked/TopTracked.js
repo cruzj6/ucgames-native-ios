@@ -6,11 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
     StyleSheet,
-    Text,
     View,
-    NavigatorIOS,
-    TouchableHighlight,
-		ListView
 } from 'react-native';
 
 class TopTracked extends Component{

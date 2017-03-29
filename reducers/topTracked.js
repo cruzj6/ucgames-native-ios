@@ -13,5 +13,5 @@ export default function topTracked(state = Immutable.Map(), action) {
 	}
 }
 
-export const getTopTracked = state => state.topTracked.get('topTracked');
+export const getTopTracked = state => state.topTracked.get('topTracked') || [];
 export const getTopTrackedError = state => state.topTracked.get('error');
