@@ -12,15 +12,13 @@ const TopTrackedList = ({ topTracked }) => {
 	const ds = new ListView.DataSource({rowHasChanged: (a, b) => a !== b});
 	const dataSource = ds.cloneWithRows(topTracked);
 
-	const listProps = {
-		dataSource,
-		enableEmptySections: true,
-		renderRow: (game) => <TopTrackedCell game={game}/>
-	};
-
 	return (
 		<View>
-			<ListView {...listProps}/>
+			<ListView
+				dataSource={dataSource}
+				enableEmptySections={true}
+				renderRow={(game) => <TopTrackedCell game={game}/>}
+			/>
 		</View>
 	)
 }

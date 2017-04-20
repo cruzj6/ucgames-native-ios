@@ -12,7 +12,8 @@ import {
 class TopTracked extends Component{
 
 	componentWillMount() {
-			this.props.dispatch(topTrackedActions.getTopTracked());
+		const { dispatch } = this.props;
+		dispatch(topTrackedActions.getTopTracked());
 	}
 
 	render(){
@@ -22,7 +23,7 @@ class TopTracked extends Component{
 		const topTrackedListProps = {
 			topTracked,
 			error,
-			...actions
+			actions
 		}
 
 		return (

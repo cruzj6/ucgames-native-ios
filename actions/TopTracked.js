@@ -15,13 +15,11 @@ const getTopTrackedErrorAction = (err) => {
 	}
 }
 
-export const getTopTracked = () => {
-	return dispatch => {
+export const getTopTracked = () => dispatch => (
 		ucapi.getTopTracked().then((res) => {
 			console.log(res.data);
 			dispatch(getTopTrackedAction(res.data));
 		}).catch((err) => {
 			dispatch(getTopTrackedErrorAction(err));
 		})
-	}
-}
+);
