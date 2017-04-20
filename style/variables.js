@@ -1,3 +1,4 @@
 export default {
-    navContentTopMargin: 64
+    navContentTopMargin: 64,
+		baseFontFamily: 'Helvetica'
 }
