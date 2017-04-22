@@ -1,5 +1,9 @@
 import React from 'react';
 import TopTrackedCell from './TopTrackedCell';
+import * as selectors from '../../reducers/topTracked';
+import * as topTrackedActions from '../../actions/TopTracked';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
     StyleSheet,
     Text,
@@ -7,20 +11,37 @@ import {
 		ListView
 } from 'react-native';
 
-const TopTrackedList = ({ topTracked }) => {
+export class TopTrackedList extends React.Component {
 
-	const ds = new ListView.DataSource({rowHasChanged: (a, b) => a !== b});
-	const dataSource = ds.cloneWithRows(topTracked);
+	componentWillMount () {
+		const { dispatch } = this.props;
+		dispatch(topTrackedActions.getTopTracked());
+	}
 
-	return (
-		<View>
-			<ListView
-				dataSource={dataSource}
-				enableEmptySections={true}
-				renderRow={(game) => <TopTrackedCell game={game}/>}
-			/>
-		</View>
-	)
+	render() {
+		const { topTracked, error, dispatch } = this.props;
+		const actions = bindActionCreators({...topTrackedActions}, dispatch);
+
+		const ds = new ListView.DataSource({rowHasChanged: (a, b) => a !== b});
+		const dataSource = ds.cloneWithRows(topTracked);
+
+		return (
+			<View>
+				<ListView
+					dataSource={dataSource}
+					enableEmptySections={true}
+					renderRow={(game) => <TopTrackedCell name={game.name} iconUri={game.imageLink.icon_url}/>}
+				/>
+			</View>
+		);
+	}
 }
 
-export default TopTrackedList;
+const mapStateToProps = state => {
+	return {
+		topTracked: selectors.getTopTracked(state),
+		error: selectors.getTopTrackedError(state)
+	}
+}
+
+export default connect(mapStateToProps)(TopTrackedList)

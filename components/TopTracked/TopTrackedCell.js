@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import globalStyles from '../../style/variables';
+import gameSummary from '../gameSummary';
 import {
     StyleSheet,
     Text,
@@ -8,14 +9,18 @@ import {
 		TouchableHighlight
 } from 'react-native';
 
-const TopTrackedCell = ({ game }) => {
+const TopTrackedCell = ({ name, iconUri }) => {
+
+	const openGameInfo = () => {
+		// TODO: open gameSummary passing it ID, it uses selector to get game object
+	};
+
 	return(
-		<TouchableHighlight>
-		<View style={styles.container}>
-			<Image source={{uri: game.imageLink.icon_url}}
-				style={styles.imageStyle}/>
-			<Text style={styles.textStyle}>{game.name}</Text>
-		</View>
+		<TouchableHighlight onPress={openGameInfo}>
+			<View style={styles.container}>
+				<Image source={{uri: iconUri}} style={styles.imageStyle}/>
+				<Text style={styles.textStyle}>{name}</Text>
+			</View>
 		</TouchableHighlight>
 	);
 }
@@ -35,5 +40,10 @@ var styles = StyleSheet.create({
 		fontFamily: globalStyles.baseFontFamily
 	}
 });
+
+TopTrackedCell.propTypes = {
+	name: PropTypes.string.isRequired,
+	iconUri: PropTypes.string.isRequired
+};
 
 export default TopTrackedCell;
