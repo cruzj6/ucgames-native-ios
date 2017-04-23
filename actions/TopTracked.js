@@ -15,8 +15,8 @@ const getTopTrackedErrorAction = (err) => {
 	}
 }
 
-export const getTopTracked = () => dispatch => (
-		ucapi.getTopTracked().then((res) => {
+export const getTopTracked = number => dispatch => (
+		ucapi.getTopTracked(number).then((res) => {
 			console.log(res.data);
 			dispatch(getTopTrackedAction(res.data));
 		}).catch((err) => {

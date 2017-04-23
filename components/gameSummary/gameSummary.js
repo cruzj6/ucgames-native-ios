@@ -9,11 +9,11 @@ import * as topTrackedSelectors from '../../reducers/topTracked';
 export const GameSummary = ({ game }) => (
 	<View>
 	{game.id}{game.name}{game.desc}
-	</View
+	</View>
 );
 
 const mapStateToProps = (state, { gameId }) => ({
-	game: topTrackedSelectors.getTopTrackedGame(state, id);
+	game: topTrackedSelectors.getTopTrackedGame(state, id)
 });
 
 GameSummary.propTypes = {

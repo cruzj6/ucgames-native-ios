@@ -8,14 +8,15 @@ import {
     StyleSheet,
     Text,
     View,
-		ListView
+		ListView,
+		Navigator
 } from 'react-native';
 
 export class TopTrackedList extends React.Component {
 
 	componentWillMount () {
 		const { dispatch } = this.props;
-		dispatch(topTrackedActions.getTopTracked());
+		dispatch(topTrackedActions.getTopTracked(10));
 	}
 
 	render() {
@@ -25,13 +26,15 @@ export class TopTrackedList extends React.Component {
 		const ds = new ListView.DataSource({rowHasChanged: (a, b) => a !== b});
 		const dataSource = ds.cloneWithRows(topTracked);
 
+		console.log({topTracked, dataSource});
+
 		return (
 			<View>
 				<ListView
-					dataSource={dataSource}
-					enableEmptySections={true}
-					renderRow={(game) => <TopTrackedCell name={game.name} iconUri={game.imageLink.icon_url}/>}
-				/>
+	 					dataSource={dataSource}
+	 					enableEmptySections={true}
+	 					renderRow={game => <TopTrackedCell name={game.name} iconUri={game.imageLink.icon_url}/>}
+						/>
 			</View>
 		);
 	}

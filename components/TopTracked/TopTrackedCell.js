@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import globalStyles from '../../style/variables';
-import gameSummary from '../gameSummary';
+import gameSummary from '../gameSummary/gameSummary';
 import {
     StyleSheet,
     Text,
@@ -14,7 +14,7 @@ const TopTrackedCell = ({ name, iconUri }) => {
 	const openGameInfo = () => {
 		// TODO: open gameSummary passing it ID, it uses selector to get game object
 	};
-
+	console.log({name, iconUri});
 	return(
 		<TouchableHighlight onPress={openGameInfo}>
 			<View style={styles.container}>
