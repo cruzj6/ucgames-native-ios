@@ -9,7 +9,7 @@ const removeTrackedParams = id => ({ gameid: id });
 
 const advancedSearchFilters = keywords => ({ filters: keywords });
 
-const advancedSearchParams = (platform, month, year, keywords) => {
+export const advancedSearchParams = (platform, month, year, keywords) => {
   const filters = advancedSearchFilters(keywords);
   return {
     platform,

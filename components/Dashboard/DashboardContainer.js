@@ -1,35 +1,36 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import TrackedList from './TrackedList';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
-    StyleSheet,
-    Text,
-    View
+  View,
 } from 'react-native';
+import TrackedList from './TrackedList';
 
 // Smart component that contains the dashboard components
 class DashboardContainer extends React.Component {
+  _onForward() {
+    this.props.navigator.push({});
+  }
 
-    static propTypes = {
-        navigator: PropTypes.object.isRequired
-    }
+  render() {
+    const { componentStyles, trackedGames } = this.props;
 
-    _onForward = () => { this.props.navigator.push({}); }
+    const dashboardProps = {
+      componentStyles,
+      trackedGames,
+    };
 
-    render() {
-        const { componentStyles, trackedGames } = this.props;
-
-				const dashboardProps = {
-					componentStyles,
-					trackedGames
-				}
-
-				return (
-				    <View>
-							<TrackedList {...dashboardProps}/>
-				    </View>
-				)
-    }
+    return (
+      <View>
+        <TrackedList {...dashboardProps} />
+      </View>
+    );
+  }
 }
+
+DashboardContainer.propTypes = {
+  componentStyles: PropTypes.object.isRequired,
+  trackedGames: PropTypes.array.isRequired,
+  navigator: PropTypes.object.isRequired,
+};
 
 export default DashboardContainer;

@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import TopTrackedList from './TopTrackedList';
+import React from 'react';
 import {
-  StyleSheet,
   View,
 } from 'react-native';
+import TopTrackedList from './TopTrackedList';
 
 const TopTracked = () => (
   <View>

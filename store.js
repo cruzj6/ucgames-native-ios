@@ -1,8 +1,6 @@
 import { combineReducers, applyMiddleware, createStore } from 'redux';
-import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
-import * as topTrackedActions from './actions/TopTracked';
 import topTracked from './reducers/topTracked';
 
 

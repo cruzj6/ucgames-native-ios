@@ -1,31 +1,25 @@
 import React from 'react';
-import TopTrackedCell from './TopTrackedCell';
-import * as selectors from '../../reducers/topTracked';
-import * as topTrackedActions from '../../actions/TopTracked';
-import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  StyleSheet,
-  Text,
   View,
   ListView,
-  Navigator,
 } from 'react-native';
+import TopTrackedCell from './TopTrackedCell';
+import * as selectors from '../../reducers/topTracked';
+import topTrackedActions from '../../actions/TopTracked';
 
-export class TopTrackedList extends React.Component {
+class TopTrackedList extends React.Component {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(topTrackedActions.getTopTracked(10));
   }
 
   render() {
-    const { topTracked, error, dispatch } = this.props;
-    const actions = bindActionCreators({ ...topTrackedActions }, dispatch);
+    const { topTracked } = this.props;
 
     const ds = new ListView.DataSource({ rowHasChanged: (a, b) => a !== b });
     const dataSource = ds.cloneWithRows(topTracked);
-
-    console.log({ topTracked, dataSource });
 
     return (
       <View>
@@ -38,6 +32,11 @@ export class TopTrackedList extends React.Component {
     );
   }
 }
+
+TopTrackedList.propTypes = {
+  dispatch: PropTypes.func,
+  topTracked: PropTypes.array,
+};
 
 const mapStateToProps = state => ({
   topTracked: selectors.getTopTracked(state),

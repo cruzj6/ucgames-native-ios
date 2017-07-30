@@ -1,4 +1,3 @@
-import UCConstants from '../../constants/ucapi';
 import * as ucapi from '../../services/ucgamesapi';
 
 describe('ucgamesapi service', () => {

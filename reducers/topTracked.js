@@ -1,5 +1,5 @@
-import actionConstants from '../constants/actions/topTracked';
 import Immutable from 'immutable';
+import actionConstants from '../constants/actions/topTracked';
 
 export default function topTracked(state = Immutable.Map(), action) {
   switch (action.type) {

@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
   View,
   ListView,
+  Image,
 } from 'react-native';
 
 // Dumb component that displays the given tracked games
@@ -19,7 +21,7 @@ const TrackedList = ({ componentStyles, trackedGames }) => {
   );
 
   return (
-    <View style={[appStyle.trackedList, componentStyles]}>
+    <View style={[componentStyles]}>
       <Text>UCGames</Text>
       <ListView
         dataSource={trackedGames}
@@ -35,5 +37,10 @@ const styles = StyleSheet.create({
     height: 80,
   },
 });
+
+TrackedList.propTypes = {
+  componentStyles: PropTypes.object.isRequired,
+  trackedGames: PropTypes.array.isRequired,
+};
 
 export default TrackedList;

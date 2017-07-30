@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {
   View,
 } from 'react-native';
-import * as gameSummaryActions from '../../actions/gameSummary';
 import * as topTrackedSelectors from '../../reducers/topTracked';
 
 export const GameSummary = ({ game }) => (
@@ -13,12 +12,11 @@ export const GameSummary = ({ game }) => (
 );
 
 const mapStateToProps = (state, { gameId }) => ({
-  game: topTrackedSelectors.getTopTrackedGame(state, id),
+  game: topTrackedSelectors.getTopTrackedGame(state, gameId),
 });
 
 GameSummary.propTypes = {
   game: PropTypes.object.isRequired,
-  gameId: PropTypes.string.isRequired,
 };
 
 const connectedGameSummary = connect(mapStateToProps)(GameSummary);

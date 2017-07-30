@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react';
-import globalStyles from '../../style/variables';
-import gameSummary from '../gameSummary/gameSummary';
 import {
   StyleSheet,
   Text,
@@ -8,12 +6,13 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
+import globalStyles from '../../style/variables';
 
 const TopTrackedCell = ({ name, iconUri }) => {
   const openGameInfo = () => {
     // TODO: open gameSummary passing it ID, it uses selector to get game object
   };
-  console.log({ name, iconUri });
+
   return (
     <TouchableHighlight onPress={openGameInfo}>
       <View style={styles.container}>
@@ -24,7 +23,7 @@ const TopTrackedCell = ({ name, iconUri }) => {
   );
 };
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
