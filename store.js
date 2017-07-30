@@ -7,7 +7,7 @@ import topTracked from './reducers/topTracked';
 
 
 const reducers = combineReducers({
-	topTracked
+  topTracked,
 });
 
 const middleware = applyMiddleware(promise(), thunk);

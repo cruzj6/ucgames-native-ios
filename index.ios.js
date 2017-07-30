@@ -1,30 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import DashboardContainer from './components/Dashboard/DashboardContainer';
-import TopTracked from './components/TopTracked/TopTracked';
-import store from './store.js';
 import {
-	AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  NavigatorIOS
+  AppRegistry,
 } from 'react-native';
+import TopTracked from './components/TopTracked/TopTracked';
+import store from './store';
 
-export default class ucgamesnative extends Component {
-  render() {
-    return (
-			<Provider store={store}>
-				<TopTracked/>
-			</Provider>
-    );
-  }
-}
+const UCGamesNative = () => (
+  <Provider store={store}>
+    <TopTracked />
+  </Provider>
+);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
-
-AppRegistry.registerComponent('ucgamesnative', () => ucgamesnative);
+AppRegistry.registerComponent('ucgamesnative', () => UCGamesNative);
