@@ -3,12 +3,12 @@ import { Provider } from 'react-redux';
 import {
   AppRegistry,
 } from 'react-native';
-import TopTracked from './components/TopTracked/TopTracked';
+import Root from './components/root';
 import store from './store';
 
 const UCGamesNative = () => (
   <Provider store={store}>
-    <TopTracked />
+    <Root />
   </Provider>
 );
 

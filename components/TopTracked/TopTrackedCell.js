@@ -8,20 +8,14 @@ import {
 } from 'react-native';
 import globalStyles from '../../style/variables';
 
-const TopTrackedCell = ({ name, iconUri }) => {
-  const openGameInfo = () => {
-    // TODO: open gameSummary passing it ID, it uses selector to get game object
-  };
-
-  return (
-    <TouchableHighlight onPress={openGameInfo}>
-      <View style={styles.container}>
-        <Image source={{ uri: iconUri }} style={styles.imageStyle} />
-        <Text style={styles.textStyle}>{name}</Text>
-      </View>
-    </TouchableHighlight>
-  );
-};
+const TopTrackedCell = ({ name, iconUri, onSelect }) => (
+  <TouchableHighlight onPress={onSelect}>
+    <View style={styles.container}>
+      <Image source={{ uri: iconUri }} style={styles.imageStyle} />
+      <Text style={styles.textStyle}>{name}</Text>
+    </View>
+  </TouchableHighlight>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -40,6 +34,7 @@ const styles = StyleSheet.create({
 });
 
 TopTrackedCell.propTypes = {
+  onSelect: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   iconUri: PropTypes.string.isRequired,
 };

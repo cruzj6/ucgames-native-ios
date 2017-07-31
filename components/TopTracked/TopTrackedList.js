@@ -5,7 +5,7 @@ import {
   View,
   ListView,
 } from 'react-native';
-import TopTrackedCell from './TopTrackedCell';
+import TopTrackedCell from './topTrackedCell';
 import * as selectors from '../../reducers/topTracked';
 import topTrackedActions from '../../actions/TopTracked';
 
@@ -16,7 +16,7 @@ class TopTrackedList extends React.Component {
   }
 
   render() {
-    const { topTracked } = this.props;
+    const { topTracked, onSelect } = this.props;
 
     const ds = new ListView.DataSource({ rowHasChanged: (a, b) => a !== b });
     const dataSource = ds.cloneWithRows(topTracked);
@@ -26,7 +26,13 @@ class TopTrackedList extends React.Component {
         <ListView
           dataSource={dataSource}
           enableEmptySections
-          renderRow={game => <TopTrackedCell name={game.name} iconUri={game.imageLink.icon_url} />}
+          renderRow={game => (
+            <TopTrackedCell
+              onSelect={() => onSelect(game.gameId)}
+              name={game.name}
+              iconUri={game.imageLink.icon_url}
+            />
+          )}
         />
       </View>
     );
@@ -34,6 +40,7 @@ class TopTrackedList extends React.Component {
 }
 
 TopTrackedList.propTypes = {
+  onSelect: PropTypes.func,
   dispatch: PropTypes.func,
   topTracked: PropTypes.array,
 };
