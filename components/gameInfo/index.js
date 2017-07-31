@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _get from 'lodash/fp/get';
 import { Text, View, StyleSheet } from 'react-native';
-import { compose, setStatic } from 'recompose';
+import { compose, mapProps, setStatic } from 'recompose';
 
 const GameInfo = ({ id }) => (
   <View style={styles.container}>
@@ -25,6 +26,10 @@ const styles = StyleSheet.create({
 
 const EnhancedGameInfo = compose(
   setStatic('navigationOptions', { title: 'Game Info' }),
+  mapProps(({ navigation, ...rest }) => ({
+    id: _get(['state', 'params', 'id'], navigation),
+    ...rest,
+  })),
 )(GameInfo);
 
 EnhancedGameInfo.propTypes = {

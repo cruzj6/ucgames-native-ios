@@ -5,15 +5,32 @@ export default function topTracked(state = Immutable.Map(), action) {
   switch (action.type) {
     case actionConstants.GET_TOP_TRACKED:
       return state
-        .set('topTracked', action.topTracked)
+        .set('games', action.topTracked)
         .delete('error');
     case actionConstants.ERROR_TOP_TRACKED:
-      return state.set('error', action.error);
+      return state
+        .set('error', action.error);
     default:
       return state;
   }
 }
 
-export const getTopTracked = state => state.topTracked.get('topTracked') || [];
-export const getTopTrackedGame = (state, id) => getTopTracked.find(game => game.id === id);
-export const getTopTrackedError = state => state.topTracked.get('error');
+export const selectors = {
+  getTopTrackedGames(state) {
+    const games = state.topTracked.get('games') || [];
+
+    return games.map(game => ({
+      id: game.gbGameId.toString(),
+      name: game.name,
+      imageLink: game.imageLink,
+    }));
+  },
+
+  getTopTrackedGame(state, id) {
+    return selectors.getTopTrackedGames(state).find(game => game.id === id);
+  },
+
+  getTopTrackedError(state) {
+    return state.topTracked.get('error');
+  },
+};

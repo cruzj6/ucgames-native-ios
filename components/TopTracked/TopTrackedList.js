@@ -1,53 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose, lifecycle } from 'recompose';
 import {
   View,
   ListView,
 } from 'react-native';
+import Shapes from '../../shapes';
 import TopTrackedCell from './topTrackedCell';
-import * as selectors from '../../reducers/topTracked';
+import { selectors } from '../../reducers/topTracked';
 import topTrackedActions from '../../actions/TopTracked';
 
-class TopTrackedList extends React.Component {
-  componentWillMount() {
-    const { dispatch } = this.props;
-    dispatch(topTrackedActions.getTopTracked(10));
-  }
+const { GameShape } = Shapes;
 
-  render() {
-    const { topTracked, onSelect } = this.props;
+const TopTrackedList = ({ topGames, onSelect }) => {
+  const ds = new ListView.DataSource({ rowHasChanged: (a, b) => a !== b });
+  const dataSource = ds.cloneWithRows(topGames);
 
-    const ds = new ListView.DataSource({ rowHasChanged: (a, b) => a !== b });
-    const dataSource = ds.cloneWithRows(topTracked);
-
-    return (
-      <View>
-        <ListView
-          dataSource={dataSource}
-          enableEmptySections
-          renderRow={game => (
-            <TopTrackedCell
-              onSelect={() => onSelect(game.gameId)}
-              name={game.name}
-              iconUri={game.imageLink.icon_url}
-            />
-          )}
-        />
-      </View>
-    );
-  }
-}
+  return (
+    <View>
+      <ListView
+        dataSource={dataSource}
+        enableEmptySections
+        renderRow={game => (
+          <TopTrackedCell
+            onSelect={() => onSelect(game.id)}
+            name={game.name}
+            iconUri={game.imageLink.icon_url}
+          />
+        )}
+      />
+    </View>
+  );
+};
 
 TopTrackedList.propTypes = {
   onSelect: PropTypes.func,
-  dispatch: PropTypes.func,
-  topTracked: PropTypes.array,
+  topGames: PropTypes.arrayOf(GameShape),
 };
 
 const mapStateToProps = state => ({
-  topTracked: selectors.getTopTracked(state),
+  topGames: selectors.getTopTrackedGames(state),
   error: selectors.getTopTrackedError(state),
 });
 
-export default connect(mapStateToProps)(TopTrackedList);
+const EnhancedTopTrackedList = compose(
+  connect(mapStateToProps),
+  lifecycle({
+    componentWillMount() {
+      const { dispatch } = this.props;
+      dispatch(topTrackedActions.getTopTracked(10));
+    },
+  }),
+)(TopTrackedList);
+
+EnhancedTopTrackedList.propTypes = {
+  onSelect: PropTypes.func,
+};
+
+export default EnhancedTopTrackedList;
