@@ -7,7 +7,7 @@ import TopTrackedList from './topTrackedList';
 
 const TopTracked = ({ navigation: { navigate } }) => (
   <View>
-    <TopTrackedList onSelect={id => navigate('GameInfo', { id })} />
+    <TopTrackedList onSelect={game => navigate('GameInfo', game)} />
   </View>
 );
 

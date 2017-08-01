@@ -3,16 +3,19 @@ import PropTypes from 'prop-types';
 import _get from 'lodash/fp/get';
 import { Text, View, StyleSheet } from 'react-native';
 import { compose, mapProps, setStatic } from 'recompose';
+import Shapes from '../../shapes';
+import GameInfoHeader from './gameInfoHeader';
 
-const GameInfo = ({ id }) => (
+const { GameShape } = Shapes;
+
+const GameInfo = ({ name }) => (
   <View style={styles.container}>
-    <Text>{id}</Text>
-    <Text>hi!</Text>
+    <GameInfoHeader title={name} />
   </View>
 );
 
 GameInfo.propTypes = {
-  id: PropTypes.string.isRequired,
+  ...GameShape.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -26,14 +29,20 @@ const styles = StyleSheet.create({
 
 const EnhancedGameInfo = compose(
   setStatic('navigationOptions', { title: 'Game Info' }),
-  mapProps(({ navigation, ...rest }) => ({
-    id: _get(['state', 'params', 'id'], navigation),
-    ...rest,
-  })),
+  mapProps(({ navigation, ...rest }) => {
+    const { id, name, game } = _get(['state', 'params'], navigation);
+
+    return {
+      id,
+      name,
+      game,
+      ...rest,
+    };
+  }),
 )(GameInfo);
 
 EnhancedGameInfo.propTypes = {
-  ...GameInfo.propTypes,
+  navigation: PropTypes.object,
 };
 
 export default EnhancedGameInfo;

@@ -24,7 +24,7 @@ const TopTrackedList = ({ topGames, onSelect }) => {
         enableEmptySections
         renderRow={game => (
           <TopTrackedCell
-            onSelect={() => onSelect(game.id)}
+            onSelect={() => onSelect(game)}
             name={game.name}
             iconUri={game.imageLink.icon_url}
           />

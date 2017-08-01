@@ -16,12 +16,14 @@ export default function topTracked(state = Immutable.Map(), action) {
 }
 
 export const selectors = {
+
   getTopTrackedGames(state) {
     const games = state.topTracked.get('games') || [];
 
     return games.map(game => ({
       id: game.gbGameId.toString(),
       name: game.name,
+      game,
       imageLink: game.imageLink,
     }));
   },
