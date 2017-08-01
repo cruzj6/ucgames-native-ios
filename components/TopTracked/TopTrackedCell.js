@@ -11,7 +11,7 @@ import globalStyles from '../../style/variables';
 const TopTrackedCell = ({ name, iconUri, onSelect }) => (
   <TouchableHighlight onPress={onSelect}>
     <View style={styles.container}>
-      <Image source={{ uri: iconUri }} style={styles.imageStyle} />
+      <Image source={{ uri: iconUri, cache: 'force-cache' }} style={styles.imageStyle} />
       <Text style={styles.textStyle}>{name}</Text>
     </View>
   </TouchableHighlight>
