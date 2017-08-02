@@ -7,7 +7,7 @@ import {
   Image,
 } from 'react-native';
 
-const Card = ({ title, children, imageUri, link }) => (
+const Card = ({ title, children, imageUri }) => (
   <View style={styles.container}>
     { title && <Text style={styles.title}>{title}</Text> }
     { imageUri && <Image style={styles.image} source={{ uri: imageUri, cache: 'force-cache' }} /> }
@@ -18,13 +18,15 @@ const Card = ({ title, children, imageUri, link }) => (
 const styles = StyleSheet.create({
   container: {
     flex: 0,
-    margin: 10,
+    margin: 5,
+    padding: 5,
     flexDirection: 'column',
     alignItems: 'center',
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
+    backgroundColor: '#ffffff',
   },
 
   title: {

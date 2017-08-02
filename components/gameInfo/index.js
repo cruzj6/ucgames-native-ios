@@ -1,16 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _get from 'lodash/fp/get';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { compose, mapProps, setStatic } from 'recompose';
 import Shapes from '../../shapes';
-import GameInfoHeader from './gameInfoHeader';
+import Card from '../../elements/card';
 
 const { GameShape } = Shapes;
 
 const GameInfo = ({ name, iconUrl }) => (
   <View style={styles.container}>
-    <GameInfoHeader title={name} imageUri={iconUrl} />
+    <Card title={name} imageUri={iconUrl}>
+      <Card>
+        <Text>Some content!</Text>
+      </Card>
+    </Card>
+    <Card title={name} imageUri={iconUrl}>
+      <Card>
+        <Text>Some content!</Text>
+      </Card>
+    </Card>
   </View>
 );
 
@@ -21,9 +30,9 @@ GameInfo.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
+    paddingTop: 0,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
 });
 

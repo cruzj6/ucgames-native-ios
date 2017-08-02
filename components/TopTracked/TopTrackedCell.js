@@ -23,10 +23,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+
   imageStyle: {
     width: 80,
     height: 80,
   },
+
   textStyle: {
     paddingLeft: 10,
     fontFamily: globalStyles.baseFontFamily,
